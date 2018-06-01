@@ -45,7 +45,7 @@ public class Convert {
 		uVolumen.put("cuarto", Double.valueOf(1.056688209432594));
 
 		uTiempo = new HashMap<String, Double>();
-		uTiempo.put("milisegundo", Double.valueOf(1*7*24*60*60*100));
+		uTiempo.put("milisegundo", Double.valueOf(1*7*24*60*60*1000));
 		uTiempo.put("segundo", Double.valueOf(1*7*24*60*60));
 		uTiempo.put("minuto", Double.valueOf(1*7*24*60));
 		uTiempo.put("hora", Double.valueOf(1*7*24));

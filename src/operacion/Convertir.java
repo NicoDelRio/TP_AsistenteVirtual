@@ -17,8 +17,7 @@ public class Convertir implements Operacion {
 
 	@Override
 	public String calcular(Pedido pedido) {
-		
-		String regex = ".*(?:cuantos|cuantas) (metros cubicos|metro cubico|\\w*) (?:son|hay en) (\\d+) (metros cubicos|metro cubico|\\w*)";
+		String regex = ".*(?:cuantos|cuantas) (metros cubicos|metro cubico|\\w*) (?:son|hay en) (\\d+.?\\d*) (metros cubicos|metro cubico|\\w*)";
 		Pattern pattern = Pattern.compile(regex, Pattern.CASE_INSENSITIVE | Pattern.UNICODE_CASE);
 		Matcher matcher = pattern.matcher(pedido.getMensaje());
 		
@@ -28,8 +27,8 @@ public class Convertir implements Operacion {
 				if(c.mismasUnidades()) {
 					double valor_2 = c.convertir();
 					String unid_1 = c.unidConAcento(matcher.group(3));
-					String unid_2 = c.unidConAcento((redondear(valor_2) != 1.0 ? matcher.group(1) : c.unidSingular(matcher.group(1)))); 
-					String equiv = (Double.parseDouble(matcher.group(2)) != 1.0 ? " equivalen a " : " equivale a ");
+					String unid_2 = c.unidConAcento((redondear(valor_2) > 1.0 ? matcher.group(1) : c.unidSingular(matcher.group(1)))); 
+					String equiv = (Double.parseDouble(matcher.group(2)) > 1.0 ? " equivalen a " : " equivale a ");
 					String val_2 = String.format(formatoRedondeo(valor_2), valor_2).replace(",", ".");
 					return pedido.getNameUsuario() + " " + matcher.group(2) + " " + unid_1 + equiv + val_2 + " " + unid_2;
 				}
@@ -40,7 +39,7 @@ public class Convertir implements Operacion {
 	
 	
 	private double redondear(double valor) {
-		return ((int)(Math.round(valor) * 100)) / 100.0;
+		return Math.round(valor * 100d) / 100d;
 	}
 	
 	private String formatoRedondeo(double valor) {

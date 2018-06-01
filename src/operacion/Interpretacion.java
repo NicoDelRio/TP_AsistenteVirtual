@@ -9,11 +9,14 @@ public class Interpretacion implements Operacion{
 	@Override
 	public void siguiente(Operacion siguiente) {
 		this.siguiente = siguiente;	
-		
 	}
 
 	@Override
-	public String calcular(Pedido pedido) {
+	public String calcular(Pedido pedido) {	
+		return siguiente.calcular(pedido);
+	}
+	
+	public Interpretacion() {
 		
 		Operacion NoDirigidoAsistente = new NoDirigidoAsistente();
 		Operacion Saludar = new Saludar();
@@ -27,7 +30,7 @@ public class Interpretacion implements Operacion{
 		Operacion ChuckNorrisFacts = new ChuckNorrisFacts();
 		Operacion Default = new Default();
 		
-		
+		this.siguiente(NoDirigidoAsistente);
 		NoDirigidoAsistente.siguiente(Saludar);
 		Saludar.siguiente(Agradecer);
 		Agradecer.siguiente(FechaActual);
@@ -39,7 +42,6 @@ public class Interpretacion implements Operacion{
 		LeyesRobotica.siguiente(ChuckNorrisFacts);
 		ChuckNorrisFacts.siguiente(Default);
 		
-		return NoDirigidoAsistente.calcular(pedido);
 	}
 
 }
