@@ -1,5 +1,6 @@
 package clase;
 
+import database.HSQL;
 import operacion.Interpretacion;
 
 public class Asistente{
@@ -13,6 +14,7 @@ public class Asistente{
 	public Asistente(String nameAsistente) {
 		this.nameAsistente = "@"+nameAsistente;
 		interpretacion = new Interpretacion();
+		HSQL db = new HSQL();
 	}
 	
 	public String escuchar(String mensaje) {

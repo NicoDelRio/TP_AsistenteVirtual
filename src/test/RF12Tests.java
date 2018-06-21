@@ -24,7 +24,8 @@ public class RF12Tests {
                 "@jenkins, recuerdame las 3 leyes de la robótica",
                 "¿@jenkins, cuales son las 3 leyes de la robótica?",
                 "@jenkins dime las 3 leyes de la robótica",
-                "@jenkins decime las leyes de la robótica"
+                "@jenkins decime las leyes de la robótica",
+                "@jenkins recuerdame todas las leyes de la robótica"
             };
         
         for (String mensaje : mensajes) {
@@ -71,6 +72,27 @@ public class RF12Tests {
 				"@delucas, la tercera ley de la robótica es: \n" +
 						"Un robot debe proteger su propia existencia en la medida en que esta protección no entre en conflicto con la primera o con la segunda ley",
 				jenkins.escuchar("@jenkins dime la 3ra ley de la robótica.")
+			);	
+		
+		Assert.assertEquals(
+				"@delucas, las leyes de la robótica son tres.",
+				jenkins.escuchar("@jenkins dime la cuarta ley de la robótica.")
+			);	
+		
+		Assert.assertEquals(
+				"@delucas, las leyes de la robótica son tres.",
+				jenkins.escuchar("@jenkins dime la 4ta ley de la robótica.")
+			);	
+		
+
+		Assert.assertEquals(
+				"@delucas, las leyes de la robótica son tres.",
+				jenkins.escuchar("@jenkins dime la quinta ley de la robótica.")
+			);	
+		
+		Assert.assertEquals(
+				"@delucas, las leyes de la robótica son tres.",
+				jenkins.escuchar("@jenkins dime la 5ta ley de la robótica.")
 			);	
 		
 	}
