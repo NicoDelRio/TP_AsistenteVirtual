@@ -31,21 +31,19 @@ public class RF14Tests {
 				"@delucas anotado.",
 				jenkins.escuchar("@jenkins le debo $60 a @maria")
 			);
-		
 		Assert.assertEquals(
 				"@delucas le debés $60 a @maria. @juan te debe $50",
 				jenkins.escuchar("@jenkins cual es mi estado de deudas?")
 			);
-		
 		Assert.assertEquals(
 				"@delucas bueno.",
 				jenkins.escuchar("@jenkins simplificar deudas con @juan y @maria")
 			);
-		
 		Assert.assertEquals(
 				"@delucas le debés $10 a @maria",
 				jenkins.escuchar("@jenkins cual es mi estado de deudas?")
 			);
+		
 		// por detrás, ahora @juan le debe $50 a @maria. Podría probarse,
 		// cambiando el interlocutor del asistente
 	}
@@ -72,7 +70,7 @@ public class RF14Tests {
 				"@delucas anotado.",
 				jenkins.escuchar("@jenkins con @juan y @maria gastamos $300 y pagué yo")
 			);
-		
+		System.out.println(jenkins.escuchar("@jenkins cual es mi estado de deudas?"));
 		Assert.assertEquals(
 				"@delucas @juan te debe $100. @maria te debe $100",
 				jenkins.escuchar("@jenkins cual es mi estado de deudas?")

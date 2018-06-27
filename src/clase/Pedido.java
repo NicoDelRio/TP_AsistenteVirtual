@@ -2,17 +2,20 @@ package clase;
 
 import java.text.Normalizer;
 
+import database.HSQL;
+
 public class Pedido {
 	private String mensaje;
 	private String nameUsuario;
 	private String nameAsistente;
-
+	private HSQL db;
 	
-	public Pedido(String mensaje_original, String nameUsuario, String nameAsistente) {
+	public Pedido(String mensaje_original, String nameUsuario, String nameAsistente, HSQL db) {
 		super();
 		this.mensaje = normalizado(mensaje_original);
 		this.nameUsuario = nameUsuario;
 		this.nameAsistente = nameAsistente;
+		this.db = db;
 	}
 
 	public String getMensaje() {
@@ -25,6 +28,10 @@ public class Pedido {
 
 	public String getNameAsistente() {
 		return nameAsistente;
+	}
+	
+	public HSQL getDB() {
+		return db;
 	}
 
 	public String normalizado(String texto_original) {	
